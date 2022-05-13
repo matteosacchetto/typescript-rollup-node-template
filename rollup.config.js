@@ -17,7 +17,7 @@ export default {
     dir: 'dist',
     format: 'es',
     preferConst: preferConst,
-    preserveModules: false,
+    preserveModules: true,
     strict: true,
     entryFileNames: "[name].mjs"
   },
