@@ -134,3 +134,6 @@ dist
 
 # Jest coverage dir
 coverage
+
+# Docs dir
+docs
