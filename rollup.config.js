@@ -10,8 +10,10 @@ import { dependencies } from "./package.json"
 const preferConst = true; // Use "const" instead of "var"
 const isWatched = process.env.ROLLUP_WATCH === 'true'; // `true` if -w option is used
 
+const nodeDependencies = []
+
 export default {
-  external: dependencies ? [...Object.keys(dependencies)] : [],
+  external: dependencies ? [...Object.keys(dependencies), ...nodeDependencies] : nodeDependencies,
   input: 'src/app.ts',
   output: {
     dir: 'dist',
