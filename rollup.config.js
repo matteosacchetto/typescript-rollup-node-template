@@ -24,11 +24,11 @@ export default {
     entryFileNames: "[name].mjs"
   },
   plugins: [
-    json({
-      preferConst: preferConst
-    }),
     eslint({
       throwOnError: true
+    }),
+    json({
+      preferConst: preferConst
     }),
     typescript(), 
     isWatched ? run() : undefined
