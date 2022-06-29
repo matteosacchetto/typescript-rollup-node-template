@@ -1,4 +1,4 @@
-FROM node:lts-alpine as build
+FROM node:16.15-alpine as build
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -20,7 +20,7 @@ RUN npm test
 # Bundle app source to single file
 RUN npm run build
 
-FROM node:lts-alpine as deploy
+FROM node:16.15-alpine as deploy
 
 # Create app directory
 WORKDIR /usr/src/app
