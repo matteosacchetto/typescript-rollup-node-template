@@ -5,7 +5,7 @@
   "main": "dist/app.mjs",
   "type": "module",
   "scripts": {
-    "lint": "npx eslint src test",
+    "lint": "npx tsc --noemit && npx eslint src test",
     "dev": "npx rollup -c -w",
     "prebuild": "rm -rf dist",
     "build": "npx rollup -c",
