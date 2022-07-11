@@ -5,12 +5,13 @@ import typescript from '@rollup/plugin-typescript';
 import run from '@rollup/plugin-run';
 
 // Import dependencies
+import { builtinModules } from 'module';
 import { dependencies } from "./package.json"
 
 const preferConst = true; // Use "const" instead of "var"
 const isWatched = process.env.ROLLUP_WATCH === 'true'; // `true` if -w option is used
 
-const nodeDependencies = []
+const nodeDependencies = builtinModules.filter(el => !el.startsWith('_')).flatMap(el => [el, `node:${el}`]);
 
 export default {
   external: dependencies ? [...Object.keys(dependencies), ...nodeDependencies] : nodeDependencies,

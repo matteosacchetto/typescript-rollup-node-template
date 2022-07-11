@@ -1,11 +1,11 @@
 {
   "name": "typescript-rollup-node-template",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Template for developing a NodeJS app using tpyescript and rollup",
   "main": "dist/app.mjs",
   "type": "module",
   "scripts": {
-    "lint": "npx eslint src test",
+    "lint": "npx tsc --noemit && npx eslint src test",
     "dev": "npx rollup -c -w",
     "prebuild": "rm -rf dist",
     "build": "npx rollup -c",
