@@ -1,6 +1,6 @@
 {
   "name": "typescript-rollup-node-template",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Template for developing a NodeJS app using tpyescript and rollup",
   "main": "dist/app.mjs",
   "type": "module",
