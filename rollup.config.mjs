@@ -3,35 +3,32 @@ import json from '@rollup/plugin-json';
 import eslint from '@rollup/plugin-eslint';
 import typescript from '@rollup/plugin-typescript';
 import run from '@rollup/plugin-run';
-
-// Import dependencies
-import { builtinModules } from 'module';
-import { dependencies } from "./package.json"
+import externals from 'rollup-plugin-node-externals'
 
 const preferConst = true; // Use "const" instead of "var"
 const isWatched = process.env.ROLLUP_WATCH === 'true'; // `true` if -w option is used
 
-const nodeDependencies = builtinModules.filter(el => !el.startsWith('_')).flatMap(el => [el, `node:${el}`]);
-
 export default {
-  external: dependencies ? [...Object.keys(dependencies), ...nodeDependencies] : nodeDependencies,
   input: 'src/app.ts',
   output: {
     dir: 'dist',
     format: 'es',
-    preferConst: preferConst,
+    generatedCode: {
+      constBindings: preferConst,
+    },
     preserveModules: true,
     strict: true,
-    entryFileNames: "[name].mjs"
+    entryFileNames: '[name].mjs',
   },
   plugins: [
+    externals(),
     eslint({
-      throwOnError: true
+      throwOnError: true,
     }),
     json({
-      preferConst: preferConst
+      preferConst: preferConst,
     }),
-    typescript(), 
-    isWatched ? run() : undefined
-  ]
+    typescript(),
+    isWatched ? run() : undefined,
+  ],
 };
